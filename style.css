@@ -1,0 +1,169 @@
+:root {
+  --font-color: white;
+  --bg-color: rgb(7,30,62);
+  --wall-color: rgb(94, 116, 149);
+  --note-color: rgb(155, 172, 195);
+  --desk-color: rgb(74, 97, 134);
+}
+
+*{
+    font-family: 'Noto Sans', 'Open Sans', "Courier", sans-serif;
+}
+
+body{
+    background: var(--bg-color);
+    color: var(--font-color);
+    text-align: center;
+    /*background-image: url("images/background.png");
+    background-repeat: no-repeat;
+    background-size: 1200px;*/
+}
+
+h1 {
+  font-size: 80px;
+}
+
+h2 {
+  font-family: "Lucida Handwriting";
+  font-size: 5rem;
+  text-decoration: underline;
+  padding-top: 2rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+li {
+  margin-bottom: 50px;
+}
+
+.room {
+  position: relative;
+}
+
+.bg {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 1200px;
+}
+
+.coffee {
+  position: absolute;
+  top: 250px;
+  left: 830px;
+  width: 360px;
+  z-index: 2;
+}
+
+.clock {
+  position: absolute;
+  top: 387px;
+  left: 20px;
+  width: 450px;
+}
+
+.light {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1200px;
+  mix-blend-mode: hard-light;
+  opacity: 0.6;
+}
+
+
+.note1 {
+  position: absolute;
+  top: 50px;
+  left: 300px;
+  width: 250px;
+}
+
+.note2 {
+  position: absolute;
+  top: 10px;
+  left: 630px;
+  width: 250px;
+}
+
+.note3 {
+  position: absolute;
+  top: 0px;
+  left: 930px;
+  width: 250px;
+}
+
+
+.static{
+  z-index: 1;
+}
+
+.static {
+  cursor: pointer;
+}
+
+.static:hover {
+  opacity: 0;
+}
+
+#clocktext {
+  color: white;
+}
+
+.clock-time {
+  position: absolute;
+  font-size: 80px;
+  top: 480px;
+  left: 80px;
+  width: 450px;
+  color: rgb(0, 255, 0);
+}
+
+#hour1 {
+  position: absolute;
+  top: 510px;
+  left: 100px;
+  width: 40px;
+}
+
+#hour2 {
+  position: absolute;
+  top: 500px;
+  left: 150px;
+  width: 40px;
+}
+
+#min1 {
+  position: absolute;
+  top: 480px;
+  left: 230px;
+  width: 40px;
+}
+
+#min2 {
+  position: absolute;
+  top: 470px;
+  left: 275px;
+  width: 40px;
+}
+
+.picture {
+/*  border: 1em solid white;*/
+  border-radius: 0.1rem;
+  box-shadow: 0.2rem 0.2rem 0.1rem var(--bg-color);
+  width: 30rem;
+/*  transform: rotate(2deg);*/
+  margin: 1em;
+  margin-top: 2em;
+}
+
+.pixelart {
+  width: 280px;
+  left: 500px;
+}
+
+
+
+

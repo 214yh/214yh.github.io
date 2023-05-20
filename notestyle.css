@@ -1,0 +1,7 @@
+body {
+	background-color: var(--note-color);
+	color: var(--bg-color);
+	border: 20px solid var(--wall-color);
+	border-left: 50px solid var(--wall-color);
+	border-right: 50px solid var(--wall-color);
+}
