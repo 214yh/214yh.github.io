@@ -32,7 +32,7 @@ function setClock() {
       var light = document.getElementById("lightID");
 
       // 23:25: rainbow light
-      if (currTime == "1655") {
+      if (currTime == "2325") {
         light.src = "images/rainbow.png";
       } else {
         light.src = "images/light.png";
