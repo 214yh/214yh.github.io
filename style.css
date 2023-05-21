@@ -164,6 +164,20 @@ li {
   left: 500px;
 }
 
+#diamond {
+  position: absolute;
+  top: -60px;
+  width: 45px;
+  left: 230px;
+}
+
+.back-button {
+  position: fixed;
+  top: 30px;
+  left: 80px;
+  width: 100px;
+}
+
 
 
 

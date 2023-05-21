@@ -1,3 +1,15 @@
+var diamondDropStartTime = null;
+var diamondDropSpeed = 300;
+var diamond = document.getElementById("diamond");
+var rot = 0;
+var dx = 0;
+var dy2 = 0;
+var step = 1;
+var diamondState = "DROP_1";
+
+var diamondIntervalId = null;
+
+
 function setClock() {
   // var clockText = document.getElementById("clocktext");
   var hour1 = document.getElementById("hour1");
@@ -34,8 +46,16 @@ function setClock() {
       // 23:25: rainbow light
       if (currTime == "2325") {
         light.src = "images/rainbow.png";
+        if (diamondIntervalId == null) {
+          console.log('starting set interval');
+          diamondIntervalId = setInterval(updateDiamondPos, 10);
+        }
       } else {
         light.src = "images/light.png";
+        if (diamondIntervalId) {
+          clearInterval(diamondIntervalId);
+          diamondIntervalId = null;
+        }
       }
     }
 
@@ -44,4 +64,71 @@ function setClock() {
   }
 }
 
+function updateDiamondPos() {
+  // console.log('update diamond pos called');
+  // dy = dt*dt*a
+  // var diamond = document.getElementById("diamond");
+  if (!diamond) {
+    diamond = document.getElementById("diamond");
+    return;
+  }
+
+  if (diamondDropStartTime == null) {
+    diamondDropStartTime = Date.now();
+    var temp = getComputedStyle(diamond).left;
+    dx = parseInt(temp.substring(0, temp.length-2), 10);
+    // console.log(dx);
+    return;
+  }
+
+  var dt = ((Date.now()) - diamondDropStartTime) / 1000;  // dt in seconds
+
+  var currPos = Math.floor(dt*dt*diamondDropSpeed);
+
+  var temp = getComputedStyle(diamond).left;
+  var currX = parseInt(temp.substring(0, temp.length-2), 10);
+
+  temp = getComputedStyle(diamond).top;
+  var currY = parseInt(temp.substring(0, temp.length-2), 10);
+
+  if (currY < 370) {
+    diamondState = "DROP_1";
+  } else if (currX < 280) {
+    diamondState = "ROLL_1";
+  } else if (currY < 550) {
+    diamondState = "DROP_2";
+  } else if (currX < 850) {
+    diamondState = "ROLL_2";
+  } else {
+    diamondState = "STOP";
+  }
+
+  // console.log(diamond.style.transform)
+
+  if (diamondState == "DROP_1") {
+    // Vertical drop
+    diamond.style.top = currPos.toString() + 'px';
+  } else if (diamondState == "ROLL_1") {
+    // Roll to the edge of the clock
+    rot += 1;
+    dx += 1;
+    diamond.style.transform = 'rotate(' + rot + 'deg)';
+    diamond.style.left = dx + 'px';
+    diamondDropStartTime  = Date.now();
+    dy2 = currY;
+  } else if (diamondState == "DROP_2"){
+    // Drop from clock
+    rot += 0.5;
+    diamond.style.transform = 'rotate(' + rot + 'deg)';
+    diamond.style.top = (dy2 + currPos) + 'px';
+  } else if (diamondState == "ROLL_2") {
+    rot += 2;
+    dx += 2;
+    diamond.style.transform = 'rotate(' + rot + 'deg)';
+    diamond.style.left = dx + 'px';
+  }
+
+}
+
 setClock();
+
