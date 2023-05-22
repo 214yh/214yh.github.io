@@ -52,9 +52,21 @@ li {
 .coffee {
   position: absolute;
   top: 250px;
-  left: 830px;
+  left: 750px;
   width: 360px;
   z-index: 2;
+}
+
+.phone {
+  position: absolute;
+  top: 530px;
+  left: 1000px;
+  width: 200px;
+  z-index: 3;
+}
+
+#phone-screen {
+  opacity: 0;
 }
 
 .clock {

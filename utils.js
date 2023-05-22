@@ -42,6 +42,8 @@ function setClock() {
     // Clock based events
     if (currTime != prevTime) {
       var light = document.getElementById("lightID");
+      var phoneScreen = document.getElementById ("phone-screen");
+      
 
       // 23:25: rainbow light
       if (currTime == "2325") {
@@ -52,6 +54,7 @@ function setClock() {
         }
       } else {
         light.src = "images/light.png";
+        phoneScreen.style.opacity = "0";
         if (diamondIntervalId) {
           clearInterval(diamondIntervalId);
           diamondIntervalId = null;
@@ -101,6 +104,8 @@ function updateDiamondPos() {
     diamondState = "ROLL_2";
   } else {
     diamondState = "STOP";
+    var phoneScreen = document.getElementById ("phone-screen");
+    phoneScreen.style.opacity = "1";
   }
 
   // console.log(diamond.style.transform)
