@@ -5,3 +5,8 @@ body {
 	border-left: 50px solid var(--wall-color);
 	border-right: 50px solid var(--wall-color);
 }
+
+a:link {
+	color: var(--bg-color);
+	text-decoration: underline;
+}

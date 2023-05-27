@@ -34,8 +34,36 @@ h3 {
   font-size: 2rem;
 }
 
+h4 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
 li {
   margin-bottom: 50px;
+}
+
+li.game-description {
+  margin-bottom: 0px;
+}
+
+ul {
+  list-style-position: inside;
+}
+
+ul.with-bullets li {
+  list-style-type: square;
+  
+  /*padding-left: 2rem;
+  background-image: url("images/diamond.png");
+  background-position: 0 0;
+  background-size: 1.6rem 1.6rem;
+  background-repeat: no-repeat;*/
+}
+
+ul li li {
+  text-align: center;
+  box-sizing: ;
 }
 
 .room {
@@ -165,7 +193,7 @@ li {
 /*  border: 1em solid white;*/
   border-radius: 0.1rem;
   box-shadow: 0.2rem 0.2rem 0.1rem var(--bg-color);
-  width: 30rem;
+  width: 500px;
 /*  transform: rotate(2deg);*/
   margin: 1em;
   margin-top: 2em;
@@ -190,6 +218,132 @@ li {
   width: 100px;
 }
 
+#interactable-phone {
+  position: absolute;
+  width: 300px;
+  top: 50px;
+  left: 500px;
+  z-index: 5;
+}
+
+#phone-clock {
+  position: absolute;
+  top: 100px;
+  left: 560px;
+  z-index: 5;
+  font-size: 60px;
+}
+
+#phone-passcode {
+  position: absolute;
+  top: 180px;
+  left: 545px;
+  z-index: 5;
+  font-size: 50px;
+}
+
+.phone-button {
+  position: absolute;
+  width: 50px;
+  top: 260px;
+  left: 550px;
+  z-index: 5;
+  opacity: 0.5;
+}
+
+.phone-button-2 {
+  position: absolute;
+  width: 50px;
+  top: 260px;
+  left: 620px;
+  z-index: 5;
+  opacity: 0.5;
+}
+
+.phone-button-3 {
+  position: absolute;
+  width: 50px;
+  top: 260px;
+  left: 690px;
+  z-index: 5;
+  opacity: 0.5;
+}
+
+.phone-button-4 {
+  position: absolute;
+  width: 50px;
+  top: 330px;
+  left: 550px;
+  z-index: 5;
+  opacity: 0.5;
+}
+
+.phone-button-5 {
+  position: absolute;
+  width: 50px;
+  top: 330px;
+  left: 620px;
+  z-index: 5;
+  opacity: 0.5;
+}
+
+.phone-button-6 {
+  position: absolute;
+  width: 50px;
+  top: 330px;
+  left: 690px;
+  z-index: 5;
+  opacity: 0.5;
+}
+
+.phone-button-7 {
+  position: absolute;
+  width: 50px;
+  top: 400px;
+  left: 550px;
+  z-index: 5;
+  opacity: 0.5;
+}
+
+.phone-button-8 {
+  position: absolute;
+  width: 50px;
+  top: 400px;
+  left: 620px;
+  z-index: 5;
+  opacity: 0.5;
+}
+
+.phone-button-9 {
+  position: absolute;
+  width: 50px;
+  top: 400px;
+  left: 690px;
+  z-index: 5;
+  opacity: 0.5;
+}
+
+.phone-button-0 {
+  position: absolute;
+  width: 50px;
+  top: 470px;
+  left: 620px;
+  z-index: 5;
+  opacity: 0.5;
+}
+
+.phone-button-enter {
+  position: absolute;
+  width: 50px;
+  top: 470px;
+  left: 690px;
+  z-index: 5;
+  opacity: 0.5;
+}
 
 
+.phone-button:hover {
+  opacity: 1;
+  transition-duration: duration 0.5s;
+}
 
