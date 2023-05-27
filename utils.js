@@ -21,6 +21,7 @@ var hour1;
 var hour2;
 var min1;
 var min2;
+var tablePhoneScreen;
 
 var passcodeBuffer = '';
 var phoneClock;
@@ -58,7 +59,6 @@ function setClock() {
     // Clock based events
     if (currTime != prevTime) {
       var light = document.getElementById("lightID");
-      var phoneScreen = document.getElementById ("phone-screen");
       
 
       // 23:25: rainbow light
@@ -70,7 +70,7 @@ function setClock() {
         }
       } else {
         light.src = "images/light.png";
-        phoneScreen.style.opacity = "0";
+        tablePhoneScreen.style.display = 'none';
         if (diamondIntervalId) {
           clearInterval(diamondIntervalId);
           diamondIntervalId = null;
@@ -120,8 +120,7 @@ function updateDiamondPos() {
     diamondState = "ROLL_2";
   } else {
     diamondState = "STOP";
-    var phoneScreen = document.getElementById ("phone-screen");
-    phoneScreen.style.opacity = "1";
+    tablePhoneScreen.style.display = '';
   }
 
   // console.log(diamond.style.transform)
@@ -222,6 +221,7 @@ window.onload = function() {
   phoneClock = document.getElementById('phone-clock-ID');
   homeScreenItems = document.getElementById('home-screen-items-ID');
   passcodeHint = document.getElementById('passcode-hint-ID');
+  tablePhoneScreen = document.getElementById('phone-screen');
   hour1 = document.getElementById("hour1");
   hour2 = document.getElementById("hour2");
   min1 = document.getElementById("min1");
