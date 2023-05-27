@@ -26,8 +26,8 @@
       <a href="resume/index.html"><img class="item note3 static" src="images/note-3.png"></a> -->
 
       <img id="lightID" class="item light" src="images/light.png">
-      <img class="item phone" src="images/phone.png">
-      <img class="item phone" id="phone-screen" src="images/phone-screen-2325.png">
+      <img class="item phone" id="table-phone-ID" src="images/phone.png" onclick="displayPhone()">
+      <img class="item phone" id="phone-screen" src="images/phone-screen-2325.png" style="display: none;">
 
       <img class="item coffee" src="images/coffee-with-steam.gif">
 
@@ -39,7 +39,47 @@
       <!-- <p class="clock-time"> 07:24 </p> -->
 
       <img id="diamond" src="images/diamond.png">
+
+      <img id="background-shader-ID" src="images/background-shader.png" style="display: none;" onclick="hidePhone()">
+
+      <div class="smartphone" id="smartphone-ID" style="display: none;">
+        <img id="interactable-phone-ID" src="images/phone-lock-screen.png">
+        <p id="phone-clock-ID" style="display: none;">07:24</p>
+
+        <div id="lock-screen-items-ID">
+          <p id="passcode-hint-ID" style="display: none;">HINT: AEDG</p>
+
+          <img class="phone-button" id="phone-button-1" src="images/phone-buttons/1.png" onclick="typeNumber('1')">
+          <img class="phone-button phone-button-2" src="images/phone-buttons/2.png" onclick="typeNumber('2')">
+          <img class="phone-button phone-button-3" src="images/phone-buttons/3.png" onclick="typeNumber('3')">
+          <img class="phone-button phone-button-4" src="images/phone-buttons/4.png" onclick="typeNumber('4')">
+          <img class="phone-button phone-button-5" src="images/phone-buttons/5.png" onclick="typeNumber('5')">
+          <img class="phone-button phone-button-6" src="images/phone-buttons/6.png" onclick="typeNumber('6')">
+          <img class="phone-button phone-button-7" src="images/phone-buttons/7.png" onclick="typeNumber('7')">
+          <img class="phone-button phone-button-8" src="images/phone-buttons/8.png" onclick="typeNumber('8')">
+          <img class="phone-button phone-button-9" src="images/phone-buttons/9.png" onclick="typeNumber('9')">
+          <img class="phone-button phone-button-0" src="images/phone-buttons/0.png">
+          <img class="phone-button phone-button-enter" src="images/phone-buttons/enter.png" onclick="enterPasscode()">
+          <p id="phone-passcode-base-ID">_ _ _ _</p>
+          <p id="phone-passcode-ID"></p>
+        </div>
+
+        <div id="home-screen-items-ID" style="display: none;">
+          <img class="phone-button app-icon" id="phone-icon-ID" src="images/phone-buttons/phone.png">
+          <img class="phone-button app-icon" id="mail-icon-ID" src="images/phone-buttons/mail.png">
+          <img class="phone-button app-icon" id="music-icon-ID" src="images/phone-buttons/music.png">
+        </div>
+      </div>
+
+
     </div>
+    <!-- <p style="color: white; position: absolute; top: 680px;">$</p> -->
+
+
+
+
+
+
 
 
   </body>

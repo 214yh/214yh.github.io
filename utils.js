@@ -9,15 +9,28 @@ var diamondState = "DROP_1";
 
 var diamondIntervalId = null;
 
+var tablePhone;
+var interactablePhone;
+var bgShader;
+var passcodeElement;
+var phoneScreen;
+var lockScreenItems;
+var homeScreenItems;
+var passcodeHint;
+var hour1;
+var hour2;
+var min1;
+var min2;
+
+var passcodeBuffer = '';
+var phoneClock;
+
 
 function setClock() {
   // var clockText = document.getElementById("clocktext");
-  var hour1 = document.getElementById("hour1");
-  var hour2 = document.getElementById("hour2");
-  var min1 = document.getElementById("min1");
-  var min2 = document.getElementById("min2");
+  
 
-  if (!hour1 || !hour2 || !min1 || !min2) {
+  if (!hour1 || !hour2 || !min1 || !min2 || !phoneClock) {
     setTimeout(setClock, 1000);
   } else {
     var date = new Date();
@@ -28,6 +41,9 @@ function setClock() {
     var hr2 = (date.getHours() % 10);
     var mins1 = Math.floor(date.getMinutes() / 10);
     var mins2 = (date.getMinutes() % 10);
+
+    phoneClock.innerHTML = hr1.toString() + hr2.toString() + ":" + mins1.toString() + mins2.toString();
+
 
     var currTime = hr1.toString() + hr2.toString() + mins1.toString() + mins2.toString();
     var i = hour1.src.length
@@ -133,6 +149,83 @@ function updateDiamondPos() {
     diamond.style.left = dx + 'px';
   }
 
+}
+
+
+function displayPhone() {
+  tablePhone.style.display = 'none';
+  interactablePhone.style.display = '';
+  bgShader.style.display = '';
+}
+
+function hidePhone() {
+  passcodeBuffer = '';
+  passcodeElement.innerHTML = passcodeBuffer;
+  bgShader.style.display = 'none';
+  interactablePhone.style.display = 'none';
+  tablePhone.style.display = '';
+}
+
+function typeNumber(num) {
+  if (passcodeBuffer.length < 8) {
+    passcodeBuffer += num + ' ';
+  }
+
+  passcodeElement.innerHTML = passcodeBuffer;
+
+}
+
+function hash(s) {
+    // Compute simple hash of string
+    // Reference: https://en.wikipedia.org/wiki/Jenkins_hash_function
+    var hash = 0;
+    for (var i = 0; i < s.length; i ++) {
+        hash += s.charCodeAt(i);
+        hash += hash << 10;
+        hash ^= hash >> 6;
+    }
+    hash += hash << 3;
+    hash ^= hash >> 11;
+    hash += hash << 15;
+    return hash;
+}
+
+function checkPW(n) {
+  return hash(n) == 1815781136;
+}
+
+function enterPasscode() {
+  if (checkPW(passcodeBuffer)) {
+    phoneScreen.src = 'images/phone-home-screen.png';
+    passcodeBuffer = '';
+    passcodeElement.innerHTML = passcodeBuffer;
+    lockScreenItems.style.display = 'none';
+    phoneClock.style.display = '';
+    homeScreenItems.style.display = '';
+  } else {
+    passcodeBuffer = '';
+    passcodeElement.innerHTML = passcodeBuffer;
+    passcodeHint.style.display = '';
+  }
+}
+
+
+
+
+window.onload = function() {
+  tablePhone = document.getElementById('table-phone-ID');
+  interactablePhone = document.getElementById('smartphone-ID');
+  bgShader = document.getElementById('background-shader-ID');
+  passcodeElement = document.getElementById('phone-passcode-ID');
+  phoneScreen = document.getElementById('interactable-phone-ID');
+  lockScreenItems = document.getElementById('lock-screen-items-ID');
+  phoneClock = document.getElementById('phone-clock-ID');
+  homeScreenItems = document.getElementById('home-screen-items-ID');
+  passcodeHint = document.getElementById('passcode-hint-ID');
+  hour1 = document.getElementById("hour1");
+  hour2 = document.getElementById("hour2");
+  min1 = document.getElementById("min1");
+  min2 = document.getElementById("min2");
 }
 
 setClock();
