@@ -22,6 +22,7 @@ var hour2;
 var min1;
 var min2;
 var tablePhoneScreen;
+var projectPageDiamond;
 
 var passcodeBuffer = '';
 var phoneClock;
@@ -63,7 +64,7 @@ function setClock() {
 
       // 23:25: rainbow light
       if (currTime == "2325") {
-        light.src = "images/rainbow.png";
+        light.src = "images/rainbow-2.png";
         if (diamondIntervalId == null) {
           console.log('starting set interval');
           diamondIntervalId = setInterval(updateDiamondPos, 10);
@@ -209,6 +210,15 @@ function enterPasscode() {
 }
 
 
+function onDiamondClick() {
+  // Play sound
+
+  // Change image source
+  var currSrc = projectPageDiamond.src;
+  console.log(currSrc);
+}
+
+
 
 
 window.onload = function() {
@@ -222,6 +232,7 @@ window.onload = function() {
   homeScreenItems = document.getElementById('home-screen-items-ID');
   passcodeHint = document.getElementById('passcode-hint-ID');
   tablePhoneScreen = document.getElementById('phone-screen');
+  projectPageDiamond = document.getElementById('diamond-ID');
   hour1 = document.getElementById("hour1");
   hour2 = document.getElementById("hour2");
   min1 = document.getElementById("min1");

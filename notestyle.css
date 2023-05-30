@@ -1,12 +1,42 @@
 body {
-	background-color: var(--note-color);
+	background-color: var(--wall-color);
 	color: var(--bg-color);
 	border: 20px solid var(--wall-color);
 	border-left: 50px solid var(--wall-color);
 	border-right: 50px solid var(--wall-color);
 }
 
+.note {
+	background-color: var(--note-color);
+}
+
 a:link {
 	color: var(--bg-color);
 	text-decoration: underline;
+}
+
+#diamond-ID {
+	width: 60px;
+/*	vertical-align: middle;*/
+	position: relative;
+	display: inline-block;
+}
+
+.hover-text {
+	position: absolute;
+	background-color: var(--diamond-color);
+	opacity: 0;
+	vertical-align: top;
+	border: 5px solid var(--diamond-color);
+	color: white;
+}
+
+#diamond-ID:hover+.hover-text {
+	opacity: 1;
+}
+
+#flower-ID {
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 1s;
 }
