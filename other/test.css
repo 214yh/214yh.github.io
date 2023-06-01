@@ -1,0 +1,27 @@
+button {
+background-color: var(--note-color);
+  border: 1px solid white;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+input {
+	border: 1px solid white;
+}
+
+.container {
+	position: fixed;
+	text-align: center;
+	top: 50%;
+	left: 50%;
+	width: 700px;
+	height: 500px;
+	border: 3px solid white;
+	padding-top: 50px;
+	transform: translate(-50%, -50%);
+}
+
+#result-ID {
+	padding-top: 20px;
+}
+

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../destyle.css" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="test.css" />
+    <link rel="icon" href="../images/icon.png">
+    <script src='sounds.js'></script>
+    <title>214yh</title>
+  </head>
+    <body>
+
+      <div class='container'>
+      <p style='padding-bottom: 10px;'>Answer should be in the following form of string, fret, note (e.g. 4,0,e). Not case sensitive.</p>
+      <button id='play-button-ID' onclick='playSound()'>Play</button>
+      <button onclick='generateRandomNote()'>Randomize</button>
+      <label for="answer-ID">Answer:</label>
+      <input type="text" id="answer-ID" name="answer" minlength="5" maxlength="7" size="10" onkeydown="checkAnswer(this)">
+
+      <p id='result-ID'></p>
+    </div>
+  </body>
+</html>
