@@ -219,6 +219,12 @@ ul li li {
   width: 100px;
 }
 
+.toggle-language {
+  position: fixed;
+  top: 50px;
+  right: 80px;
+}
+
 #interactable-phone-ID {
   position: absolute;
   width: 300px;
