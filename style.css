@@ -392,3 +392,21 @@ ul li li {
 #music-icon-ID {
   left: 700px;
 }
+
+#planet-a-button-ID {
+  top: 300px;
+  left: 545px;
+  border: 1px solid white;
+  width: 50px;
+  height: 40px;
+  opacity: 0;
+}
+
+#planet-b-button-ID {
+  top: 370px;
+  left: 710px;
+  border: 1px solid white;
+  width: 50px;
+  height: 40px;
+  opacity: 0;
+}
