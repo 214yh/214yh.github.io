@@ -5,20 +5,32 @@
     <link rel="stylesheet" href="../destyle.css" />
     <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="test.css" />
-    <link rel="icon" href="../images/icon.png">
+    <link rel="icon" href="./images/planet.png">
     <script src='sounds.js'></script>
     <title>214yh</title>
   </head>
     <body>
+      <div class="desk">
+        <img class="bg" src="./images/desk.png">
+        <a href="https://youtu.be/ysESQ1Ci110" target="_blank" rel="noreferrer noopener"><img class="planet" title="宇宙を想起した彼の小賢しい反抗" src="./images/planet.png"></a>
+        <img class="device-button" id="button-play-ID" src="./images/button-play.png" onclick="playSound()">
+        <img class="device-button" id="button-check-ID" src="./images/button-check.png" onclick="checkAnswer(this)">
+        <img class="device-button" id="button-shuffle-ID" src="./images/button-shuffle.png" onclick="generateRandomNote()">
+        <p class="device-display" id="device-output-ID"></p>
 
-      <div class='container'>
-      <p style='padding-bottom: 10px;'>Answer should be in the following form of string, fret, note (e.g. 4,0,e). Not case sensitive.</p>
-      <button id='play-button-ID' onclick='playSound()'>Play</button>
-      <button onclick='generateRandomNote()'>Randomize</button>
-      <label for="answer-ID">Answer:</label>
-      <input type="text" id="answer-ID" name="answer" minlength="5" maxlength="7" size="10" onkeydown="checkAnswer(this)">
+        
+        <input class="device-display-input" id="device-input-ID" type="text" name="answer-2" minlength="5" maxlength="7" size="20" onkeydown="checkAnswer(this)" placeholder="type answer here">
 
-      <p id='result-ID'></p>
-    </div>
+        <p id="input-label-ID">></p>
+      </div>
+
+      <!-- <div class='container'>
+        <p style='padding-bottom: 10px;'>Answer should be in the following form of string, fret, note (e.g. 4,0,e). Not case sensitive.</p>
+        <button id='play-button-ID' onclick='playSound()'>Play</button>
+        <button onclick='generateRandomNote()'>Randomize</button>
+        <label for="answer-ID">Answer:</label>
+        <input type="text" id="answer-ID" name="answer" minlength="5" maxlength="7" size="10" onkeydown="checkAnswer(this)">
+        <p id='result-ID'></p>
+      </div> -->
   </body>
 </html>

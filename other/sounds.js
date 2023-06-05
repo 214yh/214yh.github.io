@@ -31,10 +31,14 @@ var duration = 1;
 // document elements
 var playButton;
 var resultText;
+var displayInput;
+
+var helpText = 'Left: play, middle: check answer, right: shuffle.'
 
 function loadElements() {
 	playButton = document.getElementById('play-button-ID');
-	resultText = document.getElementById('result-ID');
+	resultText = document.getElementById('device-output-ID');
+	displayInput = document.getElementById('device-input-ID');
 }
 
 function loadNotes() {
@@ -61,7 +65,6 @@ function playSound() {
 	// Called when play button is clicked, play hz for duration seconds
 	// TODO: waveform
 	console.log('playing sound');
-	resultText.innerHTML = '';
 	// create Oscillator node
 	var oscillator = audioCtx.createOscillator();
 	oscillator = audioCtx.createOscillator();
@@ -80,16 +83,26 @@ function generateRandomNote() {
 	hz = notes[currString][currFret];
 	currNote = noteNames[currString][currFret];
 
-	resultText.innerHTML = '';
+	updateDisplayText('Generated new note');
 
 	// console.log(currString, currFret, hz, currNote);
 }
 
+function updateDisplayText(outputStr) {
+	resultText.innerHTML += '<br><br>' + outputStr;
+}
+
 function checkAnswer(element) {
-	if (event.key == 'Enter') {
-		let answer = element.value.split(',');
+	if (element.id == 'button-check-ID' || event.key == 'Enter') {
+		let answer = displayInput.value.split(',');
+		if (answer.length == 1 && answer[0].toLowerCase() == 'help') {
+			updateDisplayText(helpText);
+			return;
+		}
 		if (answer.length != 3) {
 			console.log('Incorrect answer length');
+			// resultText.innerHTML += '<br>Please answer in the form of [string],[fret],[note]. Example: 4,0,e';
+			updateDisplayText('Please answer in the form of [string],[fret],[note]. Example: 4,0,e');
 			return;
 		} else {
 			let stringNum = parseInt(answer[0], 10);
@@ -98,21 +111,25 @@ function checkAnswer(element) {
 
 			if (noteNames[stringNum][fretNum] != noteName) {
 				console.log('String/fret combo does not match note name');
-				resultText.innerHTML = 'String/fret combo does not match note name';
+				updateDisplayText('String/fret combo does not match note name.');
 				return;
 			}
 
 			if (noteName != currNote) {
 				console.log('Incorrect note');
-				resultText.innerHTML = 'Incorrect';
+				updateDisplayText('Incorrect');
 				return;
 			}
 
 			console.log('correct');
 			console.log(currString, currFret, noteName);
-			element.value = '';
+			if (event.key == 'Enter') {
+				element.value = '';
+			}
+			
 			let answerHz = notes[stringNum][fretNum];
-			resultText.innerHTML = 'Correct note (' + noteName + ').<br>You answered: string ' + stringNum + ' fret ' + fretNum + ', which is ' + answerHz + 'hz. Played was ' + hz + 'hz (e.g. ' + currString + ', ' + currFret + ').';
+			updateDisplayText('Correct note (' + noteName + ').<br>You answered: string ' + stringNum + ' fret ' + fretNum + ', which is ' + answerHz + 'hz. Played was ' + hz + 'hz (e.g. ' + currString + ', ' + currFret + ').');
+			// resultText.innerHTML += '<br>Correct note (' + noteName + ').<br>You answered: string ' + stringNum + ' fret ' + fretNum + ', which is ' + answerHz + 'hz. Played was ' + hz + 'hz (e.g. ' + currString + ', ' + currFret + ').';
 		}
 	}
 }
@@ -120,5 +137,6 @@ function checkAnswer(element) {
 window.onload = function () {
 	loadElements();
 	loadNotes();
+	updateDisplayText(helpText);
 	// generateRandomNote();
 };
