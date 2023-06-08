@@ -28,10 +28,14 @@ var currNote = 'E';
 var hz = 41.2;
 var duration = 1;
 
+var planetHue = 'BLUE';
+
 // document elements
 var playButton;
 var resultText;
 var displayInput;
+var planet;
+var planetUrl;
 
 var helpText = 'Left: play, middle: check answer, right: shuffle.'
 
@@ -39,6 +43,8 @@ function loadElements() {
 	playButton = document.getElementById('play-button-ID');
 	resultText = document.getElementById('device-output-ID');
 	displayInput = document.getElementById('device-input-ID');
+	planet = document.getElementById('planet-ID');
+	planetUrl = document.getElementById('planet-url-ID');
 }
 
 function loadNotes() {
@@ -134,9 +140,32 @@ function checkAnswer(element) {
 	}
 }
 
+function updatePlanet() {
+	// Update planet color and URL accordingly
+	// red: 160, purple: 80 blue: 0
+	if (planetHue == 'BLUE') {
+		planet.style.filter = 'hue-rotate(160deg)';
+		planet.title = 'どっかにいるの運命の人、エンゼル、ハニー';
+		planetUrl.href = 'https://youtu.be/ysESQ1Ci110';
+		planetHue = 'RED';
+	} else if (planetHue == 'RED') {
+		planet.style.filter = 'hue-rotate(80deg)';
+		planet.title = 'ダムス兄貴の大失策';
+		planetUrl.href = 'https://youtu.be/SBe4mPXXMOo';
+		planetHue = 'PURPLE';
+	} else {
+		planet.style.filter = '';
+		planet.title = '世界の真ん中はここだよ';
+		planetUrl.href = 'https://youtu.be/E4sq2rBnmpE';
+		planetHue = 'BLUE';
+	}
+	console.log('updated planet color ', planetHue);
+}
+
 window.onload = function () {
 	loadElements();
 	loadNotes();
 	updateDisplayText(helpText);
+	setInterval(updatePlanet, 30000);
 	// generateRandomNote();
 };
